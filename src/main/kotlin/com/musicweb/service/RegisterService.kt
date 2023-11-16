@@ -10,7 +10,8 @@ import org.springframework.stereotype.Service
 @Service
 class RegisterService @Autowired constructor(
     var userDetailsService: UserDetailsManager,
-    var bCryptPasswordEncoder: BCryptPasswordEncoder) {
+    var bCryptPasswordEncoder: BCryptPasswordEncoder
+) {
 
     fun registerUser(username: String, password: String) {
         userDetailsService.createUser(User(username, bCryptPasswordEncoder.encode(password),

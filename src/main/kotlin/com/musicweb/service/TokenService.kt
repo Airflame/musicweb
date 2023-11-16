@@ -1,0 +1,38 @@
+package com.musicweb.service
+
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.core.userdetails.User
+import org.springframework.security.oauth2.jwt.*
+import org.springframework.security.provisioning.UserDetailsManager
+import org.springframework.stereotype.Service
+import java.time.Instant
+import java.time.temporal.ChronoUnit
+
+@Service
+class TokenService @Autowired constructor(
+    var jwtDecoder: JwtDecoder,
+    var jwtEncoder: JwtEncoder,
+    var userDetailsService: UserDetailsManager
+) {
+
+    fun createToken(user: User): String {
+        val jwsHeader = JwsHeader.with { "HS256" }.build()
+        val claims = JwtClaimsSet.builder()
+            .issuedAt(Instant.now())
+            .expiresAt(Instant.now().plus(30L, ChronoUnit.DAYS))
+            .subject(user.username)
+            .claim("username", user.username)
+            .build()
+        return jwtEncoder.encode(JwtEncoderParameters.from(jwsHeader, claims)).tokenValue
+    }
+
+    fun parseToken(token: String): User? {
+        return try {
+            val jwt = jwtDecoder.decode(token)
+            val username = jwt.claims["username"] as String
+            userDetailsService.loadUserByUsername(username) as User
+        } catch (e: Exception) {
+            null
+        }
+    }
+}
