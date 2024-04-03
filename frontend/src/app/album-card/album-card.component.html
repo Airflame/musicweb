@@ -1,0 +1,9 @@
+<mat-card>
+    <mat-card-header>
+        <div mat-card-avatar [ngStyle]="{ 'background-image': 'url(' + coverUrl + ')'}"></div>
+        <mat-card-title>{{albumTitle}} ({{year}})</mat-card-title>
+        <mat-card-subtitle routerLink = "/artits/{{artistName}}">{{artistName}}</mat-card-subtitle>
+    </mat-card-header>
+    {{genres}}<br><br>
+    <b>{{rating}} / 10</b>
+</mat-card>

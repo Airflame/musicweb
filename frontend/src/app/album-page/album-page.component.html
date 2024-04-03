@@ -1,0 +1,71 @@
+
+<div class="line">
+    <div class="album-cover-card">
+        <mat-card>
+            <img class="album-cover-image" [src]="album!.coverUrl">
+        </mat-card>
+    </div>
+    <div class="album-info-card">
+        <mat-card class="album-info-mat-card">
+            <mat-card-title>{{album!.albumTitle}}</mat-card-title>
+            <table>
+                <tr>
+                  <td class="info-type">Artist:</td>
+                  <td><b>{{album!.artistName}}</b></td>
+                </tr>
+                <tr>
+                    <td class="info-type">Release date:</td>
+                    <td>{{album!.year}}</td>
+                </tr>
+                <tr>
+                    <td class="info-type">Rating:</td>
+                    <td>{{album!.rating}} / 10</td>
+                </tr>
+                <tr>
+                    <td class="info-type">Genres:</td>
+                    <td>{{album!.genres}}</td>
+                </tr>
+                <tr>
+                    <td class="info-type">Your rating:</td>
+                    <td>
+                        <ngb-rating [(rate)]="yourRating" (rateChange)="rateChange($event)"></ngb-rating>
+                        <b class="your-rating" *ngIf="yourRating > 0">{{yourRating}} / 10</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="info-type"></td>
+                    <td>
+                        <button mat-button *ngIf="yourRating > 0" (click)="removeRating()">Remove</button>
+                    </td>
+                </tr>
+              </table>
+        </mat-card>
+    </div>
+</div>
+<div class="line">
+    <div class="album-tracklist-card">
+        <mat-card class="album-tracklist-mat-card">
+            <mat-card-title>Tracklist:</mat-card-title>
+            <table>
+                <tr *ngFor="let track of album!.tracklist; let i = index">
+                    <td class="info-type">{{i + 1}}.</td>
+                    <td>{{track}}</td>
+                </tr>
+            </table>
+        </mat-card>
+    </div>
+    <div class="album-info-card">
+        <mat-card class="album-info-mat-card">
+            <mat-card-title>Ratings</mat-card-title>
+            <table>
+                <tr *ngFor="let rating of ratings; let i = index">
+                    <td>{{rating.user}}</td>
+                    <td>
+                        <ngb-rating [(rate)]="rating.rating" [readonly]="true"></ngb-rating>
+                    </td>
+                    <td>{{rating.rating}} / 10</td>
+                </tr>
+            </table>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div>
+    <mat-card>
+    <form>
+        <mat-label>Album name</mat-label><br>
+        <input matInput placeholder="Ex. Abbey Road" type="text" id="aname" name="aname" class="form-control" [(ngModel)]="albumName"><br>
+        <label for="genre">Select genre:</label><br>
+        <mat-form-field appearance="fill">
+            <mat-label>Genre</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let genre of genres" [value]="genre.value">
+                        {{genre.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field><br>
+        <label for="artist">Select Artist:</label><br>
+        <mat-form-field appearance="fill">
+            <mat-label>Artist</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let artist of artists" [value]="artist.value">
+                        {{artist.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field><br>
+        <mat-label>Year of release</mat-label><br>
+        <input matInput type="number" min="1900" max="2023" step="1" value="2016" class="form-control"/><br>
+        <mat-label>Add tracks</mat-label><br>
+        <input matInput placeholder="Track" type="text" id="track" name="track" class="form-control" [(ngModel)]="newTrack">
+        <button mat-button class="mat-button" (click)="addTrack()">Add</button><br>
+        <mat-label>Added tracks</mat-label><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Track name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let track of allTracks"> 
+                    <td>{{track}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button mat-button (click)="addAlbum()">Add Album</button>
+    </form>
+    </mat-card>
+</div>

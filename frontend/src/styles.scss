@@ -1,0 +1,12 @@
+@import '~bootstrap/scss/bootstrap';
+@import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+html, body { height: 100%; background-color: #2c3e50; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #ffffff !important;
+}
+.mat-form-field.mat-focused .mat-form-field-label {
+    color: rgba(255,255,255,.7) !important;
+}
+/* Importing Bootstrap SCSS file. */
+

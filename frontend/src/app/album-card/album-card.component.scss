@@ -1,0 +1,12 @@
+mat-card {
+    margin: 1em;
+}
+
+div[mat-card-avatar] {
+    //background-image: url('https://image.ceneostatic.pl/data/products/19477231/i-the-beatles-revolver-limited-winyl.jpg');
+    background-size: cover;
+}
+.mat-card-subtitle:hover {
+    color: blue;
+    cursor: pointer;
+  }

@@ -1,0 +1,6 @@
+<app-album-card *ngFor="let album of albums; let i = index" [albumTitle]="(i+1) + '. ' + album.albumTitle" [artistName]="album.artistName"
+[coverUrl]="album.coverUrl"
+[genres]="album.genres" 
+[year]="album.year"
+[rating]="album.rating"
+[routerLink]="['/album', album.id]"></app-album-card>

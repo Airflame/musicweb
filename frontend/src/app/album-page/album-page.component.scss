@@ -1,0 +1,47 @@
+.line {
+    display: flex;
+}
+
+.album-cover-image {
+    min-height: 20em;
+    min-width: 20em;
+    max-height: 20em;
+    max-height: 20em;
+}
+
+.album-info-card {
+    flex: 2 0 0;
+}
+
+.album-info-mat-card {
+    height: 22em;
+}
+
+.album-tracklist-mat-card {
+    width: 22em;
+}
+  
+mat-card {
+    margin: 1em;
+}
+
+.column {
+    flex: 50%;
+}
+
+.info-type {
+    color: rgba(255,255,255,.7);
+}
+
+td {
+    padding: 0.5em 1.5em;
+}
+
+.your-rating {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+button {
+    margin-left: -16px;
+}

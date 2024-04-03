@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+    <a mat-button [routerLink]="''" class="home"> Musicweb </a>
+    <span></span>
+    <div>
+        <a *ngIf="!isLogged" mat-button [routerLink]="'/login'" class="login"> Zaloguj się </a>
+        <a *ngIf="!isLogged"mat-button [routerLink]="'/sign-up'" class="sign-up"> Stwórz konto </a>
+        <a *ngIf="isLogged" mat-button [routerLink]="'/'" (click)="logout()" class="logout"> Wyloguj się </a>
+    </div>
+</mat-toolbar>
